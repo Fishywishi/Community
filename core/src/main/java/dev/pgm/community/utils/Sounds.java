@@ -15,9 +15,6 @@ public class Sounds {
   // Played when a player is warned
   public static final Sound WARN_SOUND = sound("ENDERDRAGON_GROWL", "ENTITY_ENDER_DRAGON_GROWL");
 
-  // Played when a player is frozen
-  public static final Sound FREEZE_SOUND = WARN_SOUND;
-
   // Played when a player is unfrozen
   public static final Sound THAW_SOUND =
       sound("ENDERDRAGON_GROWL", "ENTITY_ENDER_DRAGON_GROWL", 1f, 2f);
@@ -25,10 +22,6 @@ public class Sounds {
   // Played when an infraction is lifted
   public static final Sound PUNISHMENT_PARDON =
       sound("NOTE_PIANO", "BLOCK_NOTE_BLOCK_HARP", 0.7f, 1.5f);
-
-  // Played when a player is teleported via command
-  public static final Sound TELEPORT =
-      sound("ENDERMAN_TELEPORT", "ENTITY_ENDERMAN_TELEPORT", 0.7f, 0.9f);
 
   // Played when player logs in and has a pending friend request
   public static final Sound FRIEND_REQUEST_LOGIN =

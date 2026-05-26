@@ -66,11 +66,6 @@ public interface CommunityPermissions {
       ROOT + ".staff"; // Receive staff broadcasts and see disguised players (maybe add a different
   // node later)
 
-  // Freeze
-  String FREEZE = ROOT + ".freeze";
-  String FREEZE_EXEMPT = FREEZE + ".exempt";
-  String FREEZE_FORCE = FREEZE + ".force";
-
   // Match History
   String MATCH_HISTORY = ROOT + ".match-history";
 

@@ -165,12 +165,6 @@ friends:
   
   pgm-integration: true # Whether Community will attempt to hook into PGM for extended friend features (tablist / joins / death messages)
   
-# Teleports - Teleport commands include /tp, /bring, and /tploc
-teleports:
-  enabled: true
-  
-  sound: true # Play a sound upon teleportation
-  
 # Chat Management - Commands that relate to chat management such as slowmode and lockdown
 chat:
   enabled: true       # Whether chat management commands are enabled
@@ -239,12 +233,6 @@ command-audit:
   exclude-commands: # Commands to ignore (matches the start of the full command)
     - "/sudo"
     - "/community:sudo"
-
-# Freeze - Freeze players via command or observer hotbar tool (when PGM is enabled)  
-freeze:
-  enabled: true  
-  pgm-integration: true # Whether Community will attempt to hook into PGM
-  item-slot: 6          # Item slot where freeze item will be located
     
 # Mutations - a PGM exclusive feature. Allows for a variety of fun gameplay altering mechanics
 mutations:

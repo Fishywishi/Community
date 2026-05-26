@@ -7,7 +7,6 @@ import dev.pgm.community.audit.CommandAuditFeature;
 import dev.pgm.community.broadcast.BroadcastFeature;
 import dev.pgm.community.chat.management.ChatManagementFeature;
 import dev.pgm.community.chat.network.NetworkChatFeature;
-import dev.pgm.community.freeze.FreezeFeature;
 import dev.pgm.community.friends.feature.FriendshipFeature;
 import dev.pgm.community.friends.feature.types.FriendshipFeatureCore;
 import dev.pgm.community.history.MatchHistoryFeature;
@@ -53,7 +52,6 @@ public class FeatureManager {
   private final ChatManagementFeature chatManagement;
   private final NetworkChatFeature chatNetwork;
   private final MotdFeature motd;
-  private final FreezeFeature freeze;
   private final MutationFeature mutation;
   private final BroadcastFeature broadcast;
   private final CommandAuditFeature commandAudit;
@@ -88,7 +86,6 @@ public class FeatureManager {
     this.infoCommands = new InfoCommandsFeature(config, logger);
     this.chatManagement = new ChatManagementFeature(config, logger);
     this.motd = new MotdFeature(config, logger);
-    this.freeze = new FreezeFeature(config, logger);
     this.mutation = new MutationFeature(config, logger, inventory);
     this.broadcast = new BroadcastFeature(config, logger);
     this.commandAudit = new CommandAuditFeature(config, logger);
@@ -134,10 +131,6 @@ public class FeatureManager {
 
   public MotdFeature getMotd() {
     return motd;
-  }
-
-  public FreezeFeature getFreeze() {
-    return freeze;
   }
 
   public MutationFeature getMutations() {
@@ -194,7 +187,6 @@ public class FeatureManager {
     getInfoCommands().getConfig().reload(config);
     getChatManagement().getConfig().reload(config);
     getMotd().getConfig().reload(config);
-    getFreeze().getConfig().reload(config);
     getMutations().getConfig().reload(config);
     getBroadcast().getConfig().reload(config);
     getNick().getConfig().reload(config);
@@ -221,7 +213,6 @@ public class FeatureManager {
     if (getInfoCommands().isEnabled()) getInfoCommands().disable();
     if (getChatManagement().isEnabled()) getChatManagement().disable();
     if (getMotd().isEnabled()) getMotd().disable();
-    if (getFreeze().isEnabled()) getFreeze().disable();
     if (getMutations().isEnabled()) getMutations().disable();
     if (getBroadcast().isEnabled()) getBroadcast().disable();
     if (getNick().isEnabled()) getNick().disable();
