@@ -10,7 +10,6 @@ import dev.pgm.community.utils.CommandAudience;
 import dev.pgm.community.utils.PGMUtils;
 import org.bukkit.entity.Player;
 import tc.oc.pgm.api.match.Match;
-import tc.oc.pgm.lib.org.incendo.cloud.annotations.Argument;
 import tc.oc.pgm.lib.org.incendo.cloud.annotations.Command;
 import tc.oc.pgm.lib.org.incendo.cloud.annotations.CommandDescription;
 import tc.oc.pgm.lib.org.incendo.cloud.annotations.Permission;
@@ -21,15 +20,6 @@ public class ToolCommand extends CommunityCommand {
 
   public ToolCommand() {
     this.tools = Community.get().getFeatures().getModeration().getTools();
-  }
-
-  @Command("tptarget|tptg|tg <target>")
-  @CommandDescription("Target a player for the player hook tool")
-  @Permission(CommunityPermissions.STAFF)
-  public void targetCommand(
-      CommandAudience sender, Player player, @Argument("target") Player target) {
-    if (isDisabled(sender)) return;
-    tools.getTeleportHook().targetPlayer(player, target);
   }
 
   @Command("modtools|mtools")
