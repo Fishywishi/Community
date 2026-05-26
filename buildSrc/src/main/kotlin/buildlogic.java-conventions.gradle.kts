@@ -77,7 +77,7 @@ spotless {
         removeUnusedImports()
         trimTrailingWhitespace()
         formatAnnotations()
-        palantirJavaFormat("2.90.0").style("GOOGLE").formatJavadoc(true)
+        palantirJavaFormat("2.91.0").style("GOOGLE").formatJavadoc(true)
     }
 }
 
