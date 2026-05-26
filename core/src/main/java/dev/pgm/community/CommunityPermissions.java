@@ -44,13 +44,6 @@ public interface CommunityPermissions {
   String FIND = ROOT + ".find"; // Access to /find friends command
   String FIND_ANYONE = FIND + ".anyone"; // Access to /find anyone
 
-  // Teleports
-  String TELEPORT = ROOT + ".teleport"; // Access to teleport to another player
-  String TELEPORT_OTHERS = TELEPORT + ".others"; // Access to teleport other players
-  String TELEPORT_LOCATION =
-      TELEPORT + ".location"; // Access to teleport to a world location (coords)
-  String TELEPORT_ALL = TELEPORT + ".all"; // Access to teleport everyone
-
   // Chat Management
   String CHAT_MANAGEMENT =
       ROOT + ".chat"; // Able to use /chat commands, and exempt during lock & slowmode

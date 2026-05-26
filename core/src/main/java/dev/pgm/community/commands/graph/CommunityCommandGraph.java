@@ -43,7 +43,6 @@ import dev.pgm.community.requests.commands.sponsor.TokenCommands;
 import dev.pgm.community.requests.commands.supervotes.SuperVoteAdminCommands;
 import dev.pgm.community.requests.commands.supervotes.SuperVoteCommand;
 import dev.pgm.community.squads.SquadCommands;
-import dev.pgm.community.teleports.TeleportCommand;
 import dev.pgm.community.users.commands.UserInfoCommands;
 import dev.pgm.community.utils.CommandAudience;
 import org.bukkit.GameMode;
@@ -164,9 +163,6 @@ public class CommunityCommandGraph extends CommandGraph<Community> {
 
     // Squads
     register(new SquadCommands());
-
-    // Teleport
-    register(new TeleportCommand());
 
     // Users
     register(new UserInfoCommands());

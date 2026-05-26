@@ -30,8 +30,6 @@ import dev.pgm.community.sessions.feature.types.SessionFeatureCore;
 import dev.pgm.community.squads.SquadFeature;
 import dev.pgm.community.store.StoreFactory;
 import dev.pgm.community.store.Stores;
-import dev.pgm.community.teleports.TeleportFeature;
-import dev.pgm.community.teleports.TeleportFeatureBase;
 import dev.pgm.community.users.feature.UsersFeature;
 import dev.pgm.community.users.feature.types.UsersFeatureCore;
 import fr.minuskube.inv.InventoryManager;
@@ -51,7 +49,6 @@ public class FeatureManager {
   private final SessionFeature sessions;
   private final AltRiskFeature altRisk;
 
-  private final TeleportFeature teleports;
   private final InfoCommandsFeature infoCommands;
   private final ChatManagementFeature chatManagement;
   private final NetworkChatFeature chatNetwork;
@@ -88,7 +85,6 @@ public class FeatureManager {
     // Not a priority
 
     // Non-DB Features
-    this.teleports = new TeleportFeatureBase(config, logger);
     this.infoCommands = new InfoCommandsFeature(config, logger);
     this.chatManagement = new ChatManagementFeature(config, logger);
     this.motd = new MotdFeature(config, logger);
@@ -122,10 +118,6 @@ public class FeatureManager {
 
   public AltRiskFeature getAltRisk() {
     return altRisk;
-  }
-
-  public TeleportFeature getTeleports() {
-    return teleports;
   }
 
   public InfoCommandsFeature getInfoCommands() {
@@ -199,7 +191,6 @@ public class FeatureManager {
     getUsers().getConfig().reload(config);
     getSessions().getConfig().reload(config);
     getAltRisk().getConfig().reload(config);
-    getTeleports().getConfig().reload(config);
     getInfoCommands().getConfig().reload(config);
     getChatManagement().getConfig().reload(config);
     getMotd().getConfig().reload(config);
@@ -227,7 +218,6 @@ public class FeatureManager {
     if (getUsers().isEnabled()) getUsers().disable();
     if (getSessions().isEnabled()) getSessions().disable();
     if (getAltRisk().isEnabled()) getAltRisk().disable();
-    if (getTeleports().isEnabled()) getTeleports().disable();
     if (getInfoCommands().isEnabled()) getInfoCommands().disable();
     if (getChatManagement().isEnabled()) getChatManagement().disable();
     if (getMotd().isEnabled()) getMotd().disable();
