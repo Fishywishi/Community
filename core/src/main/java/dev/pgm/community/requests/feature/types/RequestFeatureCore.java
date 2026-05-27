@@ -13,10 +13,8 @@ import static tc.oc.pgm.util.text.TemporalComponent.duration;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.Maps;
-import dev.pgm.community.Community;
 import dev.pgm.community.CommunityPermissions;
 import dev.pgm.community.feature.FeatureBase;
-import dev.pgm.community.party.MapParty;
 import dev.pgm.community.requests.RequestConfig;
 import dev.pgm.community.requests.RequestProfile;
 import dev.pgm.community.requests.SponsorRequest;
@@ -199,12 +197,6 @@ public class RequestFeatureCore extends FeatureBase implements RequestFeature {
       return;
     }
 
-    // Disallow Sponsor during map party
-    if (isPartyActive()) {
-      viewer.sendWarning(text("Sorry, sponsoring is disabled during the party."));
-      return;
-    }
-
     // Disallow Sponsor when a server restart is queued
     if (isRestartQueued()) {
       viewer.sendWarning(
@@ -383,7 +375,6 @@ public class RequestFeatureCore extends FeatureBase implements RequestFeature {
               if (poolManager.getOverriderMap() != null) return; // Set-nexted map
               if (isBlitz()) return; // Prevent sponsor after blitz map
               if (RestartManager.isQueued()) return; // No sponsor when restarting
-              if (isPartyActive()) return; // No sponsor during parties
 
               SponsorRequest nextRequest = sponsor.getNextSponsor();
 
@@ -743,12 +734,6 @@ public class RequestFeatureCore extends FeatureBase implements RequestFeature {
       return (MapPoolManager) order;
     }
     return null;
-  }
-
-  private boolean isPartyActive() {
-    if (!Community.get().getFeatures().getParty().isEnabled()) return false;
-    MapParty party = Community.get().getFeatures().getParty().getParty();
-    return party != null && party.isSetup() && party.isRunning();
   }
 
   private boolean isRestartQueued() {

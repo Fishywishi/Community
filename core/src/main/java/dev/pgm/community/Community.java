@@ -5,7 +5,6 @@ import static dev.pgm.community.nick.identity.PlayerIdentity.PLAYER_IDENTITY;
 import dev.pgm.community.commands.graph.CommunityCommandGraph;
 import dev.pgm.community.events.CommunityEvent;
 import dev.pgm.community.feature.FeatureManager;
-import dev.pgm.community.squads.SquadChannel;
 import dev.pgm.community.text.TextTranslations;
 import dev.pgm.community.util.Platform;
 import dev.pgm.community.utils.PGMUtils;
@@ -17,7 +16,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import tc.oc.pgm.api.integration.Integration;
 import tc.oc.pgm.util.bukkit.BukkitUtils;
 
 public class Community extends JavaPlugin {
@@ -31,11 +29,6 @@ public class Community extends JavaPlugin {
   private InventoryManager inventory;
 
   private Random random;
-
-  @Override
-  public void onLoad() {
-    Integration.registerChannel(SquadChannel.INSTANCE);
-  }
 
   @Override
   public void onEnable() {

@@ -31,8 +31,6 @@ import dev.pgm.community.moderation.commands.WarnCommand;
 import dev.pgm.community.mutations.MutationType;
 import dev.pgm.community.mutations.commands.MutationCommands;
 import dev.pgm.community.nick.commands.NickCommands;
-import dev.pgm.community.party.MapPartyCommands;
-import dev.pgm.community.party.MapPartyType;
 import dev.pgm.community.polls.PollThreshold;
 import dev.pgm.community.polls.commands.PollManagementCommands;
 import dev.pgm.community.polls.commands.PollVoteCommands;
@@ -41,7 +39,6 @@ import dev.pgm.community.requests.commands.sponsor.SponsorCommands;
 import dev.pgm.community.requests.commands.sponsor.TokenCommands;
 import dev.pgm.community.requests.commands.supervotes.SuperVoteAdminCommands;
 import dev.pgm.community.requests.commands.supervotes.SuperVoteCommand;
-import dev.pgm.community.squads.SquadCommands;
 import dev.pgm.community.users.commands.UserInfoCommands;
 import dev.pgm.community.utils.CommandAudience;
 import org.bukkit.GameMode;
@@ -93,7 +90,6 @@ public class CommunityCommandGraph extends CommandGraph<Community> {
   protected void setupParsers() {
     registerParser(MapInfo.class, MapInfoParser::new);
     registerParser(AltRiskLevel.class, new EnumParser<>(AltRiskLevel.class));
-    registerParser(MapPartyType.class, new EnumParser<>(MapPartyType.class));
     registerParser(MutationType.class, new EnumParser<>(MutationType.class));
     registerParser(PollThreshold.class, new EnumParser<>(PollThreshold.class));
     registerParser(TargetPlayer.class, new TargetPlayerParser());
@@ -143,9 +139,6 @@ public class CommunityCommandGraph extends CommandGraph<Community> {
     // Nick
     register(new NickCommands());
 
-    // Party
-    register(new MapPartyCommands());
-
     // Polls
     register(new PollManagementCommands());
     register(new PollVoteCommands());
@@ -156,9 +149,6 @@ public class CommunityCommandGraph extends CommandGraph<Community> {
     register(new TokenCommands());
     register(new SuperVoteCommand());
     register(new SuperVoteAdminCommands());
-
-    // Squads
-    register(new SquadCommands());
 
     // Users
     register(new UserInfoCommands());

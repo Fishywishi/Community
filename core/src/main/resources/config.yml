@@ -268,11 +268,6 @@ requests:
 # Mobs - Spawn creatures that will attack players ;)
 mobs:
   enabled: true
-              
-# Map Party - A PGM exclusive feature. Allows for hosting events (map parties)
-party:
-  enabled: true  # Whether events are enabled or not
-  duration: "1h" # Default duration of a map party
 
   # General event settings
   settings:
@@ -347,12 +342,7 @@ polls:
   
   # The default threshold required for a poll to pass.
   # Options: "CLEAR_MINORITY", "SIMPLE", "TWO_THIRDS", "STRONG_MAJORITY"
-  threshold: "simple" 
-  
-# Squads - Feature that allows players to form parties and play together in a coordinated manner.
-squads:
-  # Set to true to enable squads, false to disable.
-  enabled: true
+  threshold: "simple"
   
 # Match History - Feature that tracks completed PGM matches for easy lookup via command.
 history:

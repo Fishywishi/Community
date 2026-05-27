@@ -20,13 +20,11 @@ import dev.pgm.community.network.feature.NetworkFeature;
 import dev.pgm.community.network.types.RedisNetworkFeature;
 import dev.pgm.community.nick.feature.NickFeature;
 import dev.pgm.community.nick.feature.types.NickFeatureCore;
-import dev.pgm.community.party.feature.MapPartyFeature;
 import dev.pgm.community.polls.feature.PollFeature;
 import dev.pgm.community.requests.feature.RequestFeature;
 import dev.pgm.community.requests.feature.types.RequestFeatureCore;
 import dev.pgm.community.sessions.feature.SessionFeature;
 import dev.pgm.community.sessions.feature.types.SessionFeatureCore;
-import dev.pgm.community.squads.SquadFeature;
 import dev.pgm.community.store.StoreFactory;
 import dev.pgm.community.store.Stores;
 import dev.pgm.community.users.feature.UsersFeature;
@@ -56,9 +54,7 @@ public class FeatureManager {
   private final BroadcastFeature broadcast;
   private final CommandAuditFeature commandAudit;
   private final MobFeature mob;
-  private final MapPartyFeature party;
   private final PollFeature polls;
-  private final SquadFeature squads;
   private final MatchHistoryFeature history;
 
   public FeatureManager(Configuration config, Logger logger, InventoryManager inventory) {
@@ -91,9 +87,7 @@ public class FeatureManager {
     this.commandAudit = new CommandAuditFeature(config, logger);
     this.chatNetwork = new NetworkChatFeature(config, logger, network);
     this.mob = new MobFeature(config, logger);
-    this.party = new MapPartyFeature(config, logger);
     this.polls = new PollFeature(config, logger);
-    this.squads = new SquadFeature(config, logger);
     this.history = new MatchHistoryFeature(config, logger);
   }
 
@@ -161,16 +155,8 @@ public class FeatureManager {
     return mob;
   }
 
-  public MapPartyFeature getParty() {
-    return party;
-  }
-
   public PollFeature getPolls() {
     return polls;
-  }
-
-  public SquadFeature getSquads() {
-    return squads;
   }
 
   public MatchHistoryFeature getHistory() {
@@ -194,9 +180,7 @@ public class FeatureManager {
     getNetworkChat().getConfig().reload(config);
     getRequests().getConfig().reload(config);
     getMobs().getConfig().reload(config);
-    getParty().getConfig().reload(config);
     getPolls().getConfig().reload(config);
-    getSquads().getConfig().reload(config);
     getHistory().getConfig().reload(config);
 
     // TODO: Look into maybe unregister commands for features that have been disabled
@@ -220,9 +204,7 @@ public class FeatureManager {
     if (getNetworkChat().isEnabled()) getNetworkChat().disable();
     if (getRequests().isEnabled()) getRequests().disable();
     if (getMobs().isEnabled()) getMobs().disable();
-    if (getParty().isEnabled()) getParty().disable();
     if (getPolls().isEnabled()) getPolls().disable();
-    if (getSquads().isEnabled()) getSquads().disable();
     if (getHistory().isEnabled()) getHistory().disable();
   }
 }
