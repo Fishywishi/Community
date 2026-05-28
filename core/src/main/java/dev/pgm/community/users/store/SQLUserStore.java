@@ -39,11 +39,6 @@ public class SQLUserStore implements UserStore {
   }
 
   @Override
-  public CompletableFuture<Set<UUID>> getAlternateAccounts(UUID playerId) {
-    return addressService.getAlternateAccounts(playerId);
-  }
-
-  @Override
   public CompletableFuture<LatestAddressInfo> getLatestAddress(UUID playerId) {
     return addressService.getLatestAddressInfo(playerId);
   }

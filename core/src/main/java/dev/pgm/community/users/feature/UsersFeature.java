@@ -122,14 +122,6 @@ public interface UsersFeature extends Feature {
   CompletableFuture<LatestAddressInfo> getLatestAddress(UUID playerId);
 
   /**
-   * Gets a set of alternate account ids related to the target
-   *
-   * @param playerId Player UUID
-   * @return A set of UUIDs belonging to alternate accounts
-   */
-  CompletableFuture<Set<UUID>> getAlternateAccounts(UUID playerId);
-
-  /**
    * Updates the stored username for matching id
    *
    * @param id Player UUID

@@ -127,11 +127,6 @@ public class UsersFeatureCore extends FeatureBase implements UsersFeature {
   }
 
   @Override
-  public CompletableFuture<Set<UUID>> getAlternateAccounts(UUID playerId) {
-    return store.getAlternateAccounts(playerId);
-  }
-
-  @Override
   public CompletableFuture<LatestAddressInfo> getLatestAddress(UUID playerId) {
     return store.getLatestAddress(playerId);
   }

@@ -16,8 +16,6 @@ public interface UserStore {
 
   CompletableFuture<Set<String>> getKnownIps(UUID playerId);
 
-  CompletableFuture<Set<UUID>> getAlternateAccounts(UUID playerId);
-
   CompletableFuture<LatestAddressInfo> getLatestAddress(UUID playerId);
 
   void trackIp(UUID id, String address);

@@ -1,6 +1,5 @@
 package dev.pgm.community.feature;
 
-import dev.pgm.community.alts.feature.AltRiskFeature;
 import dev.pgm.community.assistance.feature.AssistanceFeature;
 import dev.pgm.community.assistance.feature.types.AssistanceFeatureCore;
 import dev.pgm.community.audit.CommandAuditFeature;
@@ -44,7 +43,6 @@ public class FeatureManager {
   private final NickFeature nick;
   private final RequestFeature requests;
   private final SessionFeature sessions;
-  private final AltRiskFeature altRisk;
 
   private final InfoCommandsFeature infoCommands;
   private final ChatManagementFeature chatManagement;
@@ -72,7 +70,6 @@ public class FeatureManager {
     this.friends = new FriendshipFeatureCore(config, logger, users, stores.friends());
     this.nick = new NickFeatureCore(config, logger, users, stores.nicks());
     this.requests = new RequestFeatureCore(config, logger, users, stores.requests());
-    this.altRisk = new AltRiskFeature(config, logger, users, sessions, moderation);
 
     // TODO: 1. Support non-sql databases?
     // Ex. FileReportFeature, MongoReportFeature, RedisReportFeature...
@@ -105,10 +102,6 @@ public class FeatureManager {
 
   public SessionFeature getSessions() {
     return sessions;
-  }
-
-  public AltRiskFeature getAltRisk() {
-    return altRisk;
   }
 
   public InfoCommandsFeature getInfoCommands() {
@@ -169,7 +162,6 @@ public class FeatureManager {
     getModeration().getConfig().reload(config);
     getUsers().getConfig().reload(config);
     getSessions().getConfig().reload(config);
-    getAltRisk().getConfig().reload(config);
     getInfoCommands().getConfig().reload(config);
     getChatManagement().getConfig().reload(config);
     getMotd().getConfig().reload(config);

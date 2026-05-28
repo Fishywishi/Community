@@ -1,7 +1,6 @@
 package dev.pgm.community.commands.graph;
 
 import dev.pgm.community.Community;
-import dev.pgm.community.alts.AltRiskLevel;
 import dev.pgm.community.assistance.commands.PlayerHelpCommand;
 import dev.pgm.community.assistance.commands.ReportCommands;
 import dev.pgm.community.broadcast.BroadcastCommand;
