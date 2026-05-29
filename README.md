@@ -1,21 +1,15 @@
-# Community
-A PGM companion plugin for effortless community management
+# Uranus
+A PGM companion plugin for effortless community management, forked from [Community](https://github.com/PGMDev/Community).
 
-# Introduction
-Community offers an all-in-one solution for managing Minecraft PGM server communities. It is designed specifically to work with PGM, but can also be used independently. This project aims to provide a comprehensive yet user-friendly platform for server administrators to manage players, track accounts, and offer a wide range of useful features. The plugin will continuously evolve, with new features being added regularly. 
+## Introduction
+Uranus delivers optional extras and enhancements outside of Mars' core scope.
+It is a simplified fork of Community, trimmed down to the parts Warzone requires for compatibility with [Mars](https://github.com/Warzone/mars).
 
-# Key Features:
-- Robust Moderation Tools
-- Account Tracking
-- Teleportation
-- User Assistance/Reporting System
-- User-friendly Friendship System
+## Key Features:
 - Nickname System
-- Map Party System
 - Match Mutations
-- Player Party/Squad System
+- Map Sponsoring System
 - Polls
-- Cross-Server Chat & Report Functionality
 - Utility Commands
 
 ## Documents
@@ -24,5 +18,5 @@ Community offers an all-in-one solution for managing Minecraft PGM server commun
 2. [`CODE_OF_CONDUCT`](docs/CODE_OF_CONDUCT.md) - guidelines that contributors and server owners must agree to.
 3. [`CONTRIBUTING`](docs/CONTRIBUTING.md) - how to build, compile, test, and submit changes to the project.
 
-## Governance
-This project is maintained by [applenick](https://github.com/applenick), with assistance from [Electroid](https://github.com/Electroid) and other PGMDev developers. 
+## Support
+Please raise any questions or issues on the [Issues page](https://github.com/Warzone/Uranus/issues) or the [Warzone Discord server](https://warz.one/discord).

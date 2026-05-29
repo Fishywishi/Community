@@ -51,7 +51,7 @@ public class WebUtils {
         url = (HttpURLConnection) new URI(RANDOM_NAME_API).toURL().openConnection();
 
         url.setRequestMethod("GET");
-        url.setRequestProperty("User-Agent", "Community");
+        url.setRequestProperty("User-Agent", "Uranus");
         url.setInstanceFollowRedirects(true);
         url.setConnectTimeout(10000);
         url.setReadTimeout(10000);
@@ -90,7 +90,7 @@ public class WebUtils {
             new URI(USERNAME_API + assertNotNull(input)).toURL().openConnection();
 
         url.setRequestMethod("GET");
-        url.setRequestProperty("User-Agent", "Community");
+        url.setRequestProperty("User-Agent", "Uranus");
         url.setRequestProperty("Accept", "application/json");
         url.setInstanceFollowRedirects(true);
         url.setConnectTimeout(10000);

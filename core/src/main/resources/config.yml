@@ -1,13 +1,13 @@
 # 
-# Community
-# A plugin for managing a Minecraft PGM community
+# Uranus
+# A plugin for optional extras and enhancements outside of Mars' core scope
 #
 general:
   # Display name for the network used in various locations.
-  server-name: "&4Overcast &7Community"
+  server-name: "&dWarzone &7Network"
 
   # Unique identifier for the server, used for cross-server tracking.
-  server-id: "occ"
+  server-id: "wz"
 
   # Determine whether to use the Environment API to retrieve the server ID.
   use-environment: false
@@ -16,7 +16,7 @@ general:
   environment-server-id: "server-id"
   
   # Store link used to advertise in specific messages
-  store-link: "https://oc.tc/store"
+  store-link: "https://warz.one/store"
 
   # Where Mojang account details are fetched from
   mojang-api: "https://api.ashcon.app/mojang/v2/user/"
@@ -47,10 +47,10 @@ nick:
 
 # Custom Info Commands
 commands:
-  enabled: true
+  enabled: false
   # Example of /rules command
   rules: # The command name is defined as the config section
-    permission: "community.rules" # You can define any permission node, or use "" for no permission
+    permission: "uranus.rules" # You can define any permission node, or use "" for no permission
     lines: # You can have an unlimited # of lines that will be sent to the player. & color code formatting supported
       - "&7&m-------&r &a&lServer Rules&f &7&m-------&r"
       - "&e1. &3Be Nice"
@@ -60,24 +60,24 @@ commands:
   website:
     permission: "" # For no permission, leave empty
     lines:
-      - "&7Visit our website at &b&nhttps://pgm.dev"
+      - "&7Visit our website at &b&nhttps://warzone.network"
 # Message of the day - The lines here are sent to every player upon login (color codes & allowed)      
 motd:
-  enabled: true
+  enabled: false
   lines:
-    - "&cWelcome to &4&lCommunity"
+    - "&cWelcome to &d&lWarzone"
     - "&6To configure this message check the &aconfig.yml"      
 
 # Broadcast - Broadcast announcement via /broadcast with the ability to send as title or chat only
 broadcast:
-  enabled: true
+  enabled: false
   sound: true                  # Whether a small sound will be played
   title-seconds: 5             # Number of seconds title will stay on screen for
   prefix: "&8[&c&lAlert&8]&c " # Prefix message
   
   # A sub feature of Broadcasts: send messages to all players in chat with a delay
   announcements:
-    enabled: true
+    enabled: false
     delay-seconds: 180             # Time in seconds between different announcements
     prefix: "&7&l[&9&lTip&7&l]&r " # Broadcast prefix
     messages:                      # Messages sent in order (color codes allowed)
@@ -100,8 +100,8 @@ requests:
     map-cooldown: 10        # How much to multiply match duration by for map cooldown
     use-pgm-cooldowns: true # Whether to hook into PGMs persistent map cooldown storage
     limit: 10               # Maximum number of sponsor requests allowed at one time
-    daily-tokens: 1         # Number of tokens given on a daily basis (community.token.daily perm)
-    weekly-tokens: 1        # Number of tokens given on a weekly basis (community.token.weekly perm)
+    daily-tokens: 1         # Number of tokens given on a daily basis (uranus.token.daily perm)
+    weekly-tokens: 1        # Number of tokens given on a weekly basis (uranus.token.weekly perm)
     max-tokens: 7           # Maximum amount of tokens an account can collect
     refund: true            # Tokens are refunded when map vote is successful
     scale-factor: 0.45      # Scaling factor for adjusting the upper bound of map size selection
@@ -136,7 +136,7 @@ history:
   # Set to true to enable match history, false to disable.
   enabled: false
 
-# Network - Features which help in running Community on multiple servers
+# Network - Features which help in running Uranus on multiple servers
 network:
   enabled: false  
   id: "" # Network id of server, leave blank for randomly generated

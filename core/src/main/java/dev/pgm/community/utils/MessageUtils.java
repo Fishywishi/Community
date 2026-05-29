@@ -2,10 +2,8 @@ package dev.pgm.community.utils;
 
 import static net.kyori.adventure.text.Component.space;
 import static net.kyori.adventure.text.Component.text;
-import static net.kyori.adventure.text.JoinConfiguration.separator;
 import static tc.oc.pgm.util.text.TemporalComponent.duration;
 
-import com.google.common.collect.Lists;
 import dev.pgm.community.Community;
 import java.time.Duration;
 import java.time.Instant;
@@ -20,11 +18,9 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.ChatColor;
-import tc.oc.pgm.util.LegacyFormatUtils;
 import tc.oc.pgm.util.bukkit.BukkitUtils;
 import tc.oc.pgm.util.text.TextException;
 import tc.oc.pgm.util.text.TextParser;
-import tc.oc.pgm.util.text.TextTranslations;
 
 public class MessageUtils {
 
@@ -42,38 +38,6 @@ public class MessageUtils {
             Community.get().getServerConfig().getStoreLink(),
             NamedTextColor.AQUA,
             TextDecoration.UNDERLINED))
-        .build();
-  }
-
-  public static String formatKickScreenMessage(String headerTitle, List<Component> lines) {
-    List<Component> message = Lists.newArrayList();
-
-    Component header =
-        text(LegacyFormatUtils.horizontalLineHeading(headerTitle, ChatColor.DARK_GRAY));
-
-    Component footer = text(
-        LegacyFormatUtils.horizontalLine(ChatColor.DARK_GRAY, LegacyFormatUtils.MAX_CHAT_WIDTH));
-
-    message.add(header); // Header Line - FIRST
-    message.addAll(lines); // Add messages
-    message.add(footer); // Footer Line - LAST
-
-    return TextTranslations.translateLegacy(
-        Component.join(separator(text("\n" + ChatColor.RESET)), message));
-  }
-
-  public static Component formatUnseen(String target) {
-    return text()
-        .append(text(target, NamedTextColor.DARK_AQUA))
-        .append(text(" has never joined the server", NamedTextColor.RED))
-        .build();
-    // TODO: translate
-  }
-
-  public static Component formatNotFriend(String target) {
-    return text()
-        .append(text("You are not friends with ", NamedTextColor.RED))
-        .append(text(target, NamedTextColor.DARK_AQUA))
         .build();
   }
 

@@ -22,21 +22,21 @@ public class CommunityPluginCommand extends CommunityCommand {
     this.users = Community.get().getFeatures().getUsers();
   }
 
-  @Command("community reload")
+  @Command("uranus reload")
   @CommandDescription("Reload the plugin")
   @Permission(CommunityPermissions.RELOAD)
   public void reload(CommandAudience audience) {
     Community.get().reload();
-    audience.sendWarning(text("Community has been reloaded")); // TODO: translate
+    audience.sendWarning(text("Uranus has been reloaded")); // TODO: translate
   }
 
-  @Command("community stats")
+  @Command("uranus stats")
   @CommandDescription("View database stats")
   @Permission(CommunityPermissions.RELOAD)
   public void stats(CommandAudience audience) {
     audience.sendMessage(TextFormatter.horizontalLineHeading(
         audience.getSender(),
-        text("Community Database Stats", NamedTextColor.YELLOW),
+        text("Uranus Database Stats", NamedTextColor.YELLOW),
         NamedTextColor.DARK_RED));
     sendTotalCount(users, "Total Users", audience);
   }

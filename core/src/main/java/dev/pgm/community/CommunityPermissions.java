@@ -6,7 +6,7 @@ public interface CommunityPermissions {
   // etc
 
   // Root permission node
-  String ROOT = "community";
+  String ROOT = "uranus";
 
   // Admin - Reserved for restricted features
   String ADMIN = ROOT + ".admin";

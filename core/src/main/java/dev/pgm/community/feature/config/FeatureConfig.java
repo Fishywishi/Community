@@ -1,6 +1,5 @@
 package dev.pgm.community.feature.config;
 
-import dev.pgm.community.assistance.feature.AssistanceFeature;
 import org.bukkit.configuration.Configuration;
 
 public interface FeatureConfig {

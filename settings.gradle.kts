@@ -1,4 +1,4 @@
-rootProject.name = "community"
+rootProject.name = "uranus"
 
 include(":util")
 include(":platform-sportpaper")

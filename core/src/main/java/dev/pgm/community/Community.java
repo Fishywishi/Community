@@ -44,7 +44,7 @@ public class Community extends JavaPlugin {
     try {
       Platform.init();
     } catch (Throwable t) {
-      getLogger().log(Level.SEVERE, "Failed to initialize Community platform", t);
+      getLogger().log(Level.SEVERE, "Failed to initialize Uranus platform", t);
       getServer().getPluginManager().disablePlugin(this);
       return;
     }
@@ -109,7 +109,7 @@ public class Community extends JavaPlugin {
 
   public String getServerName() {
     return BukkitUtils.colorize(
-        config.getServerDisplayName() == null ? "&b&lCommunity" : config.getServerDisplayName());
+        config.getServerDisplayName() == null ? "&b&lUranus" : config.getServerDisplayName());
   }
 
   public String getServerId() {
@@ -147,6 +147,6 @@ public class Community extends JavaPlugin {
   public static void log(String format, Object... objects) {
     Bukkit.getConsoleSender()
         .sendRawMessage(ChatColor.translateAlternateColorCodes(
-            '&', String.format("&7[&4Community&7]&r " + format, objects)));
+            '&', String.format("&7[&4Uranus&7]&r " + format, objects)));
   }
 }

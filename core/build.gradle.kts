@@ -71,8 +71,7 @@ tasks {
                     "mainClass" to "dev.pgm.community.Community",
                     "version" to version,
                     "commitHash" to commitHash,
-                    "author" to "applenick",
-                    "url" to "https://pgm.dev/"
+                    "url" to "https://github.com/Warzone/Uranus"
                 )
             )
         }
