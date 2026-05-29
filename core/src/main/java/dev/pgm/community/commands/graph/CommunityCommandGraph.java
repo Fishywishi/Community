@@ -1,10 +1,7 @@
 package dev.pgm.community.commands.graph;
 
 import dev.pgm.community.Community;
-import dev.pgm.community.assistance.commands.PlayerHelpCommand;
-import dev.pgm.community.assistance.commands.ReportCommands;
 import dev.pgm.community.broadcast.BroadcastCommand;
-import dev.pgm.community.chat.management.ChatManagementCommand;
 import dev.pgm.community.commands.CommunityPluginCommand;
 import dev.pgm.community.commands.ContainerCommand;
 import dev.pgm.community.commands.FlightCommand;
@@ -17,16 +14,8 @@ import dev.pgm.community.commands.injectors.CommandAudienceProvider;
 import dev.pgm.community.commands.player.TargetPlayer;
 import dev.pgm.community.commands.providers.GameModeParser;
 import dev.pgm.community.commands.providers.TargetPlayerParser;
-import dev.pgm.community.friends.commands.FriendshipCommand;
 import dev.pgm.community.history.MatchHistoryCommand;
 import dev.pgm.community.mobs.MobCommand;
-import dev.pgm.community.moderation.commands.BanCommand;
-import dev.pgm.community.moderation.commands.BlockGlitchCommand;
-import dev.pgm.community.moderation.commands.KickCommand;
-import dev.pgm.community.moderation.commands.MuteCommand;
-import dev.pgm.community.moderation.commands.PunishmentCommand;
-import dev.pgm.community.moderation.commands.ToolCommand;
-import dev.pgm.community.moderation.commands.WarnCommand;
 import dev.pgm.community.mutations.MutationType;
 import dev.pgm.community.mutations.commands.MutationCommands;
 import dev.pgm.community.nick.commands.NickCommands;
@@ -38,7 +27,6 @@ import dev.pgm.community.requests.commands.sponsor.SponsorCommands;
 import dev.pgm.community.requests.commands.sponsor.TokenCommands;
 import dev.pgm.community.requests.commands.supervotes.SuperVoteAdminCommands;
 import dev.pgm.community.requests.commands.supervotes.SuperVoteCommand;
-import dev.pgm.community.users.commands.UserInfoCommands;
 import dev.pgm.community.utils.CommandAudience;
 import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
@@ -88,7 +76,6 @@ public class CommunityCommandGraph extends CommandGraph<Community> {
   @Override
   protected void setupParsers() {
     registerParser(MapInfo.class, MapInfoParser::new);
-    registerParser(AltRiskLevel.class, new EnumParser<>(AltRiskLevel.class));
     registerParser(MutationType.class, new EnumParser<>(MutationType.class));
     registerParser(PollThreshold.class, new EnumParser<>(PollThreshold.class));
     registerParser(TargetPlayer.class, new TargetPlayerParser());
@@ -104,33 +91,15 @@ public class CommunityCommandGraph extends CommandGraph<Community> {
 
   @Override
   protected void registerCommands() {
-    // Assistance
-    register(new PlayerHelpCommand());
-    register(new ReportCommands());
 
     // Broadcast
     register(new BroadcastCommand());
-
-    // Chat
-    register(new ChatManagementCommand());
-
-    // Friends
-    register(new FriendshipCommand());
 
     // History
     register(new MatchHistoryCommand());
 
     // Mobs
     register(new MobCommand());
-
-    // Moderation
-    register(new BanCommand());
-    register(new KickCommand());
-    register(new MuteCommand());
-    register(new PunishmentCommand());
-    register(new ToolCommand());
-    register(new WarnCommand());
-    register(new BlockGlitchCommand());
 
     // Mutations
     register(new MutationCommands());
@@ -148,9 +117,6 @@ public class CommunityCommandGraph extends CommandGraph<Community> {
     register(new TokenCommands());
     register(new SuperVoteCommand());
     register(new SuperVoteAdminCommands());
-
-    // Users
-    register(new UserInfoCommands());
 
     // Etc. Commands
     register(new ContainerCommand());

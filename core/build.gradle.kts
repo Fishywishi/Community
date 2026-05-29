@@ -17,7 +17,7 @@ dependencies {
 }
 
 tasks.named<ShadowJar>("shadowJar") {
-    archiveFileName = "Community.jar"
+    archiveFileName = "Uranus.jar"
     archiveClassifier.set("")
     destinationDirectory = rootProject.projectDir.resolve("build/libs")
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -36,7 +36,7 @@ tasks.named<ShadowJar>("shadowJar") {
 }
 
 publishing {
-    publications.create<MavenPublication>("community") {
+    publications.create<MavenPublication>("Uranus") {
         groupId = project.group as String
         artifactId = project.name
         version = project.version as String

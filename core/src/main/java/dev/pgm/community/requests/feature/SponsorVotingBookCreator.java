@@ -10,7 +10,6 @@ import dev.pgm.community.requests.RequestProfile;
 import dev.pgm.community.requests.SponsorRequest;
 import dev.pgm.community.requests.supervotes.SuperVoteComponents;
 import dev.pgm.community.utils.MessageUtils;
-import dev.pgm.community.utils.ranks.RanksConfig.Rank;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.TextComponent;
@@ -138,17 +137,6 @@ public class SponsorVotingBookCreator extends VotingBookCreatorImpl {
   private Component getVoteMultiplierComponent(int multiplier) {
 
     TextComponent.Builder stdHoverBuilder = text();
-
-    for (Rank rank : Community.get().getServerConfig().getRanksConfig().getRanks()) {
-      Component rankComponent = text()
-          .append(text(rank.getPrefix() + " " + rank.getName(), rank.getTextColor()))
-          .append(text(" has a ", NamedTextColor.GRAY))
-          .append(text(rank.getVoteMultiplier() + "x", rank.getTextColor(), TextDecoration.BOLD))
-          .append(text(" multiplier", NamedTextColor.GRAY))
-          .build();
-
-      stdHoverBuilder.append(rankComponent).appendNewline();
-    }
 
     int value = ((RequestConfig) manager.getConfig()).getSuperVoteMultiplier();
     Component supervote = text()

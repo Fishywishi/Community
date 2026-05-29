@@ -1,12 +1,5 @@
 package dev.pgm.community.store;
 
-import dev.pgm.community.assistance.store.AssistanceStore;
-import dev.pgm.community.assistance.store.SQLAssistanceStore;
-import dev.pgm.community.friends.store.FriendStore;
-import dev.pgm.community.friends.store.SQLFriendStore;
-import dev.pgm.community.moderation.ModerationConfig;
-import dev.pgm.community.moderation.store.ModerationStore;
-import dev.pgm.community.moderation.store.SQLModerationStore;
 import dev.pgm.community.nick.NickConfig;
 import dev.pgm.community.nick.store.NickStore;
 import dev.pgm.community.nick.store.SQLNickStore;
@@ -41,36 +34,20 @@ public final class StoreFactory {
 
   private static class SqlStores implements Stores {
     private final UserStore users;
-    private final AssistanceStore assistance;
-    private final ModerationStore moderation;
     private final SessionStore sessions;
     private final RequestStore requests;
-    private final FriendStore friends;
     private final NickStore nicks;
 
     private SqlStores(Configuration config) {
       this.users = new SQLUserStore();
-      this.assistance = new SQLAssistanceStore();
-      this.moderation = new SQLModerationStore(new ModerationConfig(config));
       this.sessions = new SQLSessionStore();
       this.requests = new SQLRequestStore();
-      this.friends = new SQLFriendStore();
       this.nicks = new SQLNickStore(new NickConfig(config));
     }
 
     @Override
     public UserStore users() {
       return users;
-    }
-
-    @Override
-    public AssistanceStore assistance() {
-      return assistance;
-    }
-
-    @Override
-    public ModerationStore moderation() {
-      return moderation;
     }
 
     @Override
@@ -81,11 +58,6 @@ public final class StoreFactory {
     @Override
     public RequestStore requests() {
       return requests;
-    }
-
-    @Override
-    public FriendStore friends() {
-      return friends;
     }
 
     @Override

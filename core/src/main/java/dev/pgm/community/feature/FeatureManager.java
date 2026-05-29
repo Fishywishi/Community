@@ -1,18 +1,9 @@
 package dev.pgm.community.feature;
 
-import dev.pgm.community.assistance.feature.AssistanceFeature;
-import dev.pgm.community.assistance.feature.types.AssistanceFeatureCore;
-import dev.pgm.community.audit.CommandAuditFeature;
 import dev.pgm.community.broadcast.BroadcastFeature;
-import dev.pgm.community.chat.management.ChatManagementFeature;
-import dev.pgm.community.chat.network.NetworkChatFeature;
-import dev.pgm.community.friends.feature.FriendshipFeature;
-import dev.pgm.community.friends.feature.types.FriendshipFeatureCore;
 import dev.pgm.community.history.MatchHistoryFeature;
 import dev.pgm.community.info.InfoCommandsFeature;
 import dev.pgm.community.mobs.MobFeature;
-import dev.pgm.community.moderation.feature.ModerationFeature;
-import dev.pgm.community.moderation.feature.types.ModerationFeatureCore;
 import dev.pgm.community.motd.MotdFeature;
 import dev.pgm.community.mutations.feature.MutationFeature;
 import dev.pgm.community.network.feature.NetworkFeature;
@@ -35,22 +26,16 @@ import org.bukkit.configuration.Configuration;
 /** Manages all {@link Feature}s of the plugin */
 public class FeatureManager {
 
-  private final AssistanceFeature reports;
-  private final ModerationFeature moderation;
   private final UsersFeature users;
-  private final FriendshipFeature friends;
   private final NetworkFeature network;
   private final NickFeature nick;
   private final RequestFeature requests;
   private final SessionFeature sessions;
 
   private final InfoCommandsFeature infoCommands;
-  private final ChatManagementFeature chatManagement;
-  private final NetworkChatFeature chatNetwork;
   private final MotdFeature motd;
   private final MutationFeature mutation;
   private final BroadcastFeature broadcast;
-  private final CommandAuditFeature commandAudit;
   private final MobFeature mob;
   private final PollFeature polls;
   private final MatchHistoryFeature history;
@@ -63,11 +48,6 @@ public class FeatureManager {
     // DB Features
     this.users = new UsersFeatureCore(config, logger, stores.users());
     this.sessions = new SessionFeatureCore(users, logger, stores.sessions());
-    this.reports =
-        new AssistanceFeatureCore(config, logger, users, network, inventory, stores.assistance());
-    this.moderation =
-        new ModerationFeatureCore(config, logger, users, network, stores.moderation());
-    this.friends = new FriendshipFeatureCore(config, logger, users, stores.friends());
     this.nick = new NickFeatureCore(config, logger, users, stores.nicks());
     this.requests = new RequestFeatureCore(config, logger, users, stores.requests());
 
@@ -77,23 +57,12 @@ public class FeatureManager {
 
     // Non-DB Features
     this.infoCommands = new InfoCommandsFeature(config, logger);
-    this.chatManagement = new ChatManagementFeature(config, logger);
     this.motd = new MotdFeature(config, logger);
     this.mutation = new MutationFeature(config, logger, inventory);
     this.broadcast = new BroadcastFeature(config, logger);
-    this.commandAudit = new CommandAuditFeature(config, logger);
-    this.chatNetwork = new NetworkChatFeature(config, logger, network);
     this.mob = new MobFeature(config, logger);
     this.polls = new PollFeature(config, logger);
     this.history = new MatchHistoryFeature(config, logger);
-  }
-
-  public AssistanceFeature getReports() {
-    return reports;
-  }
-
-  public ModerationFeature getModeration() {
-    return moderation;
   }
 
   public UsersFeature getUsers() {
@@ -106,14 +75,6 @@ public class FeatureManager {
 
   public InfoCommandsFeature getInfoCommands() {
     return infoCommands;
-  }
-
-  public ChatManagementFeature getChatManagement() {
-    return chatManagement;
-  }
-
-  public FriendshipFeature getFriendships() {
-    return friends;
   }
 
   public MotdFeature getMotd() {
@@ -130,14 +91,6 @@ public class FeatureManager {
 
   public BroadcastFeature getBroadcast() {
     return broadcast;
-  }
-
-  public CommandAuditFeature getCommandAudit() {
-    return commandAudit;
-  }
-
-  public NetworkChatFeature getNetworkChat() {
-    return chatNetwork;
   }
 
   public RequestFeature getRequests() {
@@ -158,18 +111,13 @@ public class FeatureManager {
 
   public void reloadConfig(Configuration config) {
     // Reload all config values here
-    getReports().getConfig().reload(config);
-    getModeration().getConfig().reload(config);
     getUsers().getConfig().reload(config);
     getSessions().getConfig().reload(config);
     getInfoCommands().getConfig().reload(config);
-    getChatManagement().getConfig().reload(config);
     getMotd().getConfig().reload(config);
     getMutations().getConfig().reload(config);
     getBroadcast().getConfig().reload(config);
     getNick().getConfig().reload(config);
-    getCommandAudit().getConfig().reload(config);
-    getNetworkChat().getConfig().reload(config);
     getRequests().getConfig().reload(config);
     getMobs().getConfig().reload(config);
     getPolls().getConfig().reload(config);
@@ -181,19 +129,13 @@ public class FeatureManager {
   }
 
   public void disable() {
-    if (getReports().isEnabled()) getReports().disable();
-    if (getModeration().isEnabled()) getModeration().disable();
     if (getUsers().isEnabled()) getUsers().disable();
     if (getSessions().isEnabled()) getSessions().disable();
-    if (getAltRisk().isEnabled()) getAltRisk().disable();
     if (getInfoCommands().isEnabled()) getInfoCommands().disable();
-    if (getChatManagement().isEnabled()) getChatManagement().disable();
     if (getMotd().isEnabled()) getMotd().disable();
     if (getMutations().isEnabled()) getMutations().disable();
     if (getBroadcast().isEnabled()) getBroadcast().disable();
     if (getNick().isEnabled()) getNick().disable();
-    if (getCommandAudit().isEnabled()) getCommandAudit().disable();
-    if (getNetworkChat().isEnabled()) getNetworkChat().disable();
     if (getRequests().isEnabled()) getRequests().disable();
     if (getMobs().isEnabled()) getMobs().disable();
     if (getPolls().isEnabled()) getPolls().disable();

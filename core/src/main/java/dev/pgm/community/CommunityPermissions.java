@@ -11,48 +11,9 @@ public interface CommunityPermissions {
   // Admin - Reserved for restricted features
   String ADMIN = ROOT + ".admin";
 
-  // Moderation:
-
-  // Punishment Types
-  String KICK = ROOT + ".kick"; // Access to the /kick command
-  String WARN = ROOT + ".warn"; // Access to the /warn command
-  String MUTE = ROOT + ".mute"; // Access to the /mute command
-  String BAN = ROOT + ".ban"; // Access to the /ban command
-
-  // Punishment related commands
-  String LOOKUP = ROOT + ".lookup"; // Access to view own record with /lookup
-  String LOOKUP_OTHERS = LOOKUP + ".others"; // Access to lookup other players
-  String UNBAN = ROOT + ".pardon"; // Access to the /unban command
-  String PUNISH = ROOT + ".punish"; // Access to punishment commands (/rp, /ph)
-  String PUNISHMENT_BROADCASTS =
-      ROOT + ".view-punishments"; // Access to view when punishments are broadcast silently
-
-  // Sign Logger
-  String SIGN_LOG_BROADCASTS = ROOT + ".view-sign-logs"; // Access to view when signs are placed
-  String BLOCK_GLITCH_BROADCASTS =
-      ROOT + ".view-block-glitch"; // Access to view blockglitch alerts and replays
-
-  // Reports
-  String REPORTS = ROOT + ".reports"; // Access to view report broadcast & report history
-  String REPORT_BROADCASTS = REPORTS + ".view-broadcasts"; // Access to view report broadcasts
-
   // Staff
   String RELOAD = ROOT + ".reload";
   String RESTRICTED = ROOT + ".restricted"; // Access to restricted info (e.g IP addresses)
-
-  // Sessions
-  String FIND = ROOT + ".find"; // Access to /find friends command
-  String FIND_ANYONE = FIND + ".anyone"; // Access to /find anyone
-
-  // Chat Management
-  String CHAT_MANAGEMENT =
-      ROOT + ".chat"; // Able to use /chat commands, and exempt during lock & slowmode
-
-  // Network chat
-  String CROSS_NETWORK_CHAT = ROOT + ".network-chat";
-
-  // Friends
-  String FRIENDSHIP = ROOT + ".friendship"; // Access to /friend commands
 
   // Nicknames
   String NICKNAME = ROOT + ".nick"; // Access to /nick (random)

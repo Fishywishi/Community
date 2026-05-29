@@ -1,7 +1,6 @@
 package dev.pgm.community;
 
 import dev.pgm.community.utils.NetworkUtils;
-import dev.pgm.community.utils.ranks.RanksConfig;
 import org.bukkit.configuration.Configuration;
 import tc.oc.occ.environment.Environment;
 
@@ -11,7 +10,6 @@ public class CommunityConfig {
   private String serverId;
   private boolean useEnvironment;
   private String environmentServerIdKey;
-  private RanksConfig ranks;
   private String storeLink;
 
   private String mojangAPIAddress;
@@ -22,7 +20,6 @@ public class CommunityConfig {
   }
 
   public void reload(Configuration config) {
-    this.ranks = new RanksConfig(config);
     this.serverDisplayName = config.getString("general.server-name", "");
     this.serverId = config.getString("general.server-id", "");
     this.useEnvironment = config.getBoolean("general.use-environment");
@@ -48,10 +45,6 @@ public class CommunityConfig {
 
   public boolean isEnvironmentEnabled() {
     return useEnvironment && Environment.get() != null;
-  }
-
-  public RanksConfig getRanksConfig() {
-    return ranks;
   }
 
   public String getStoreLink() {

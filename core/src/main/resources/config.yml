@@ -24,123 +24,9 @@ general:
   # Where random usernames are fetched from (Nicknames)
   randomname-api: "https://api.gamertag.dev/random"
 
-# Ranks    
-ranks:
-  supporter:
-    name: "Supporter"
-    permission: "community.rank.supporter"
-    prefix: "*"
-    color: "GREEN"
-    multiplier: 2
-    weight: 0
-  sponsor:
-    name: "Sponsor"
-    permission: "community.rank.sponsor"
-    prefix: "+"
-    color: "YELLOW"
-    multiplier: 3
-    weight: 1
-  
-# Moderation - Settings related to punishments (/warn, /kick, /ban, /mute)
-moderation:
-  enabled: true   # Whether punishments are enabled
-  persist: true   # Whether to save to database
-  broadcast: true # Whether to broadcast punishments
-  
-  service: "occ"  # Name of service that punishments will be recorded under.
-  
-  #Message options for kick screen
-  rules-link: "https://pgm.dev/rules" # Link to rules
-  appeal-link: "&7If this ban was made in error, contact &estaff@pgm.dev" # Appeal message (Only shown for perm-bans)
-  staff-signoff: true # Whether staff name will be revealed in kick screen (for non-disguised staff)
-
-  # Broadcast message format for Punishments
-  #
-  # Available Placeholders:
-  # %issuer% - The name of the player issuing the punishment
-  # %type% - The abbreviated punishment type
-  # %full_type% - The full punishment type w/ duration (if available)
-  # %target% - The name of the target player
-  # %reason% - The reason for the action
-  # %div% - A broadcast divider 
-  #
-  # Note: order placeholders with a space between, color codes not supported
-  global-broadcast: "%issuer% %div% %type% %div% %target%"
-  staff-broadcast: "%issuer% %div% %full_type% %div% %target% %div% %reason%"
-  
-  #Punishments types and options
-  warn:
-    enabled: true
-    public: false
-  kick:
-    enabled: true
-    public: true
-    match-ban: "10m" # Bans player from playing for given time. Set to -1 to disable (PGM)
-  ban:
-    evasion-expires: 30 # Minutes
-    enabled: true
-    public: true
-  mute:
-    enabled: true
-    public: true
-        
-  # Sign Logging
-  sign-logger:
-    enabled: true
-
-  # BlockGlitch Logging
-  block-glitch-logger:
-    enabled: true
-
-  #Logins
-  login-timeout: 30
-  
-  # Interactive Tools
-  tools:
-    mod-menu: 
-      enabled: true  # Whether mod menu is enabled
-      item-slot: 8   # Slot where mod menu tool is located
-    player-hook: 
-      enabled: true  # Whether player hook is enabled
-      item-slot: 3   # Slot where player hook is located
-    lookup-sign: 
-      enabled: true  # Whether lookup sign is enabled
-      item-slot: 30  # Slot where lookup sign is located
-  
-# Reports - Settings related to /report and /reports
-reports:
-  enabled:  true   # Whether reports are enabled
-  persist:  true   # Whether to save to database 
-  cooldown: 15     # Duration of cooldown in seconds
-  
-  menu: true        # Whether /report will use a menu, false for custom input only
-  allow-input: true # If we should always accept custom reports when provided a reason
-  
-  notify-sender: true  # If report senders should be notified of successful reports
-  notify-expire: "30m" # How long until reports no longer notify sender of punishment
-  report-expire: "1h"  # How long reports are cached locally
-    
-  # Interactive menu layout (enabled when menu -> true)
-  # Color codes are allowed in name & description fields
-  categories:
-    # A Report Category - Cheating
-    cheating:                    # ID of category
-      name: "&cCheating"         # Display name of the category
-      icon: "IRON_SWORD"         # Material used for icon
-      description: 
-        - "&7Hacking"            # Description explaining what the category is
-      
-      # Reasons - A list of reasons for given category
-      reasons:
-        hacker:                   # ID of reason
-          name: "&cHacking"       # Display name of the reason
-          icon: "DIAMOND_SWORD"   # Material used for icon
-          description: 
-            - "&7This user hacks" # Description explaining what the reason is
-
 # Users - Track user related info including, name/uuid, first/last logins, join count, and IP history
 users:
-  enabled: true
+  enabled: false
   
   # A list of commands/messages to execute upon a player's first time joining
   # Replacements:
@@ -156,24 +42,10 @@ users:
 
 # Nicknames - Able to adjust username of player to hide from unwanted eyes (todo wow change this message)  
 nick:
-  enabled: true 
+  enabled: false
   pgm-integration: true
-  
-# Friends - Settings related to friendship features/commands  
-friends:
-  enabled: true
-  
-  pgm-integration: true # Whether Community will attempt to hook into PGM for extended friend features (tablist / joins / death messages)
-  
-# Chat Management - Commands that relate to chat management such as slowmode and lockdown
-chat:
-  enabled: true       # Whether chat management commands are enabled
-  slowmode-speed: 30  # Cooldown time (in seconds) between messages during slowmode 
-  login-alert: true   # Whether to alert joining players if slowmode or lockdown are enabled
-  block-repeated-messages: true # If repeated chat messages sent consecutively should be blocked
-  expire-repeated-messages: "1s" # Duration after which repeated messages expire
-    
-# Custom Info Commands    
+
+# Custom Info Commands
 commands:
   enabled: true
   # Example of /rules command
@@ -184,12 +56,11 @@ commands:
       - "&e1. &3Be Nice"
       - "&e2. &3No griefing"
       - "&e3. &3No cheating"
-  # Second example of a single line /website command    
+  # Second example of a single line /website command
   website:
     permission: "" # For no permission, leave empty
     lines:
       - "&7Visit our website at &b&nhttps://pgm.dev"
-
 # Message of the day - The lines here are sent to every player upon login (color codes & allowed)      
 motd:
   enabled: true
@@ -213,27 +84,6 @@ broadcast:
       - "&3This is an alert, you can adjust the messages inside of &aconfig.yml"
       - "&a&lYou can use &b&lcolor &4&lcodes &6&ltoo!"    
 
-# Command Audit - Broadcast staff actions to admin chat
-command-audit:
-  enabled: true
-  audit-permissions: # Only audit commands from players with one of these permissions
-    - "community.staff"
-  exempt-permissions: # Skip auditing when a player has any of these permissions
-    - "community.command-audit.exempt"
-  click-teleport: true # Allow clicking the alert to teleport to the command location
-  include-prefixes: # Prefixes to always audit (matches the start of the full command)
-    - "//"
-    - "/worldedit:"
-    - "/minecraft:"
-  include-permissions: # Command permission nodes that include any of these strings will be audited
-    - "worldedit"
-  include-commands: # Commands to audit (matches the start of the full command)
-    - "/summon"
-    - "/enchant"
-  exclude-commands: # Commands to ignore (matches the start of the full command)
-    - "/sudo"
-    - "/community:sudo"
-    
 # Mutations - a PGM exclusive feature. Allows for a variety of fun gameplay altering mechanics
 mutations:
   enabled: true  
@@ -269,69 +119,6 @@ requests:
 mobs:
   enabled: true
 
-  # General event settings
-  settings:
-    login-message: true # If a login message should be sent to notify new players of party
-    party-notifications: true # If a title and chat message should be sent when party starts/stops
-    single-event: true # If only one map party is allowed per day (use --force to override)
-    raindrop-activate: "rdm set 1.5" # Command used to enable raindrop multiplier
-    raindrop-deactivate: "rdm clear" # Command used to disable raindrop multiplier
-
-  # Extra server management - When enabled will auto-execute the given commands to the console
-  extra:
-    enabled: false # Whether the open/close commands are sent on party start/stop
-    open-command: "" # Command sent when the party begins (useful for opening an extra server)
-    close-command: "" # Command sent when the party concludes (useful for closing server)
-
-  # Start of party settings
-  welcome:
-    # Message sent under party info
-    line: "&7Not interested? Click [&bhere&7] &7to play a normal match"
-    # Message shown when hovering over the welcome line
-    hover: "Click here to join a non-modified match" 
-    # Command run when clicking welcome line
-    command: "/normal" 
-  
-  # End of party settings
-  goodbye:
-    # Message sent as party concludes
-    line: "&aThe party is now over, we hope you had fun!"
-  
-  # Custom formatting for server list MOTD during events
-  # $name$ - Party name
-  # $time$ - Time left
-  motd-format: "&c&lCommunity\n&6» &a$name$ &6«"
-  
-  # Host Permissions - A list of extra permissions given to event hosts
-  host-permissions: []
-    
-  # Event broadcasts - Automated broadcasts sent during map party  
-  broadcasts:
-    enabled: true
-    interval: 2m
-    prefix: "&7[&2&lEvent&7] "
-    # <message>;<command>;<hover message>;<specific interval>
-    lines:
-      - "&7Currently partying on $name$&7! &aHave fun;/party;&7Click to view party into"
-      - "&7Want to play a normal match? Click &7[&bhere&7];/normal;&7Click to join normal match"
-      - "&cWarning&8: &7match may contain modified gameplay;/party"
-      - "&a$time$ &7left of $name$;/party;&7To view more party info, click here;15m"
-  
-  # Preset party types that will show up in the GUI for instant use
-  presets:
-    # An example party preset
-    staff_party:
-      # Display name of the party, used in various places
-      name: "&d&lStaff Party"
-      # Description of party used to inform joining players
-      description: "&3A fun selection of party maps"
-      # Duration of time party will be active for (-1 for no limit)                  
-      duration: "30m"
-      # Map pool used if mode is REGULAR
-      pool: "fun"
-      # List of map names if mode is CUSTOM
-      maps: [] 
-      
 # Polls - Feature that empowers players to collectively decide on in-game questions asked by staff.
 polls:
   # Set to true to enable polls, false to disable.
@@ -347,8 +134,7 @@ polls:
 # Match History - Feature that tracks completed PGM matches for easy lookup via command.
 history:
   # Set to true to enable match history, false to disable.
-  enabled: true
-
+  enabled: false
 
 # Network - Features which help in running Community on multiple servers
 network:
@@ -361,23 +147,19 @@ network:
     password: ""
     port: 6379
     ssl: false
-  
-  # Network Chat - Sub feature of Networking, exclusive to PGM servers. 
-  # Allows for chat to broadcast across servers  
-  chat:
-    enabled: true
+
 # TODO: Coming Soon...    
 #    types:
 #      admin: true
 #      global: false
 #      message: false
-  
-  
+
+
 database:
   # Backend options: "sql" uses the Database plugin, "sqlite" stores data locally.
   # If you use "sql", install and configure the Database plugin. Link: https://github.com/OvercastCommunity/Database
   # "name" maps to the database id defined by the Database plugin config.
-  backend: "sql" # Options: sql (default), sqlite
+  backend: "sqlite" # Options: sql (default), sqlite
   name: "primary" # Optional named database from Database plugin
   
   sqlite:
